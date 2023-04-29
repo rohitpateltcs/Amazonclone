@@ -1,10 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 const Header = () => {
+  const items = useSelector(selectItems);
+
   return (
-    <div className="bg-black flex items-center justify-between px-2">
+    <div className="bg-black flex items-center justify-between py-4">
       {/* Left */}
       <div>
         <Image
@@ -60,7 +65,7 @@ const Header = () => {
       </div>
 
       {/* Right */}
-      <div className="flex text-white space-x-8">
+      <div className="flex text-white lg:space-x-8 space-x-4">
         <div>
           <h1 className="text-xs font-bold">Hello, Rohit Patel</h1>
           <h2 className="font-medium">Account & Lists</h2>
@@ -86,7 +91,7 @@ const Header = () => {
               />
             </svg>
           </Link>
-          <div>0</div>
+          <div>{items.length}</div>
         </div>
       </div>
     </div>
